@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  View,
-  TextInput,
-  Button
-} from "react-native";
-import ListItem from "./src/components/ListItem"
+import { StyleSheet, View, TextInput, Button } from "react-native";
+import ListItem from "./src/components/ListItem";
+import ListInput from "./src/components/ListInput";
 
 export default class App extends Component {
   state = {
@@ -29,26 +25,28 @@ export default class App extends Component {
     })
   }
 
+  onPressListHandler = (i) => {
+    this.setState(prevState => {
+      return {
+        places: prevState.places.filter((el, index) => {
+          if (i !== index) {
+            return el
+          }
+        })
+      }
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.textInput}
-            value={this.state.placeName}
-            placeholder="An Awesome Place"
-            onChangeText={this.placeNameChangeHandler}
-          />
-          <Button
-            onPress={this.onSubmitHandler}
-            style={styles.add}
-            title="Add"
-            color="#841584"
-            accessibilityLabel="Learn more about this purple button"
-          />
-        </View>
+        <ListInput
+          placeName={this.state.placeName}
+          onNameChange={this.placeNameChangeHandler}
+          onSubmit={this.onSubmitHandler}
+        />
         <View style={styles.listContainer}>
-          <ListItem places={this.state.places}/>
+          <ListItem places={this.state.places} onPressHandler={this.onPressListHandler} />
         </View>
       </View>
     );
@@ -63,23 +61,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#F5FCFF"
   },
-  inputContainer: {
-    // flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-  },
-  textInput: {
-    width: "70%",
-    borderColor: "black",
-    borderWidth: 0.5
-  },
-  add: {
-    width: "30%"
-  },
   listContainer: {
     width: "100%",
-    paddingTop: 5,
+    paddingTop: 5
   }
 });
