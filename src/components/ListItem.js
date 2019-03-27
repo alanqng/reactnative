@@ -1,40 +1,47 @@
 import React from "react";
-import { Text, StyleSheet, ScrollView, FlatList } from "react-native";
+import {
+  Text,
+  StyleSheet,
+  FlatList,
+  Image,
+  View,
+  TouchableOpacity
+} from "react-native";
 
 const ListItem = props => {
   return (
     <FlatList
-    data={props.places}
-    renderItem={(info) =>(
-      <Text
-          style={styles.listItem}
-          onPress={() => props.onPressHandler(info.index)}
+      data={props.places}
+      renderItem={info => (
+        <TouchableOpacity
+          style={styles.listView}
+          onPress={() => props.onItemSelected(info.index)}
         >
-          {info.item.place}
-        </Text>
-    )}
+          <Image style={styles.listImg} source={info.item.image} />
+          <Text style={styles.listText}>{info.item.place}</Text>
+        </TouchableOpacity>
+      )}
     />
-  )
-      {/* {props.places.map((place, index) => (
-        <Text
-          style={styles.listItem}
-          key={index}
-          onPress={() => props.onPressHandler(index)}
-        >
-          {place}
-        </Text>
-      ))} */}
-  
-  // );
-  
+  );
 };
 
 const styles = StyleSheet.create({
-  listItem: {
-    width: "100%",
-    padding: 5,
-    marginBottom: 3,
+  listView: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 5,
     backgroundColor: "#eee"
+  },
+  listText: {
+    width: "80%",
+    padding: 5,
+    marginBottom: 3
+  },
+  listImg: {
+    width: 30,
+    height: 30,
+    margin: 5,
+    marginRight: 8
   }
 });
 
