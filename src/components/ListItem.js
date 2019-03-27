@@ -1,10 +1,21 @@
 import React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, ScrollView, FlatList } from "react-native";
 
 const ListItem = props => {
   return (
-    <View>
-      {props.places.map((place, index) => (
+    <FlatList
+    data={props.places}
+    renderItem={(info) =>(
+      <Text
+          style={styles.listItem}
+          onPress={() => props.onPressHandler(info.index)}
+        >
+          {info.item.place}
+        </Text>
+    )}
+    />
+  )
+      {/* {props.places.map((place, index) => (
         <Text
           style={styles.listItem}
           key={index}
@@ -12,9 +23,10 @@ const ListItem = props => {
         >
           {place}
         </Text>
-      ))}
-    </View>
-  );
+      ))} */}
+  
+  // );
+  
 };
 
 const styles = StyleSheet.create({

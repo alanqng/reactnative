@@ -28,15 +28,15 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        width: "100%"
+        width: "100%",
       },
       textInput: {
-        width: "70%",
-        borderColor: "black",
-        borderWidth: 0.5
+        width: "75%",
+        borderColor: "#841584",
+        borderBottomWidth: 0.5
       },
       add: {
-        width: "30%"
+        width: "25%",
       },
   });
 

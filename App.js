@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View, TextInput, Button } from "react-native";
+import { StyleSheet, View} from "react-native";
 import ListItem from "./src/components/ListItem";
 import ListInput from "./src/components/ListInput";
 
@@ -20,7 +20,7 @@ export default class App extends Component {
 
     this.setState(prevState => {
       return {
-        places: prevState.places.concat(prevState.placeName)
+        places: prevState.places.concat({key: Math.random().toString(), place: prevState.placeName})
       }
     })
   }
@@ -29,9 +29,7 @@ export default class App extends Component {
     this.setState(prevState => {
       return {
         places: prevState.places.filter((el, index) => {
-          if (i !== index) {
-            return el
-          }
+            return i !== index;
         })
       }
     })
