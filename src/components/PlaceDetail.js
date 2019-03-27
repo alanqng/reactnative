@@ -3,7 +3,7 @@ import { Modal, View, Image, Text, Button, StyleSheet } from "react-native";
 
 const PlaceDetail = props => {
   let modalContent = null;
-  if (props.selectedPlace !== null) {
+  if (props.selectedPlace) {
     modalContent = (
       <View>
         <Image soruce={props.selectedPlace.image} style={styles.placeImage} />
