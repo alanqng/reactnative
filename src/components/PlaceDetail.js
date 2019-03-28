@@ -1,5 +1,6 @@
 import React from "react";
-import { Modal, View, Image, Text, Button, StyleSheet } from "react-native";
+import { Modal, View, Image, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
+import Icon from 'react-native-vector-icons/AntDesign'
 
 const PlaceDetail = props => {
   let modalContent = null;
@@ -16,8 +17,15 @@ const PlaceDetail = props => {
       <View style={styles.modalContainer}>
         {modalContent}
         <View style={styles.buttonsContainer}>
-          <Button title="Delete" color="red" onPress={props.onItemDeleted} />
-          <Button title="Close" onPress={props.onModalClose} />
+          <TouchableOpacity>
+            <Icon size={50} name="delete" color="red" onPress={props.onItemDeleted} style={{marginRight: 20}}/>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Icon size={50} name="close" color="blue" onPress={props.onModalClose}/>
+          </TouchableOpacity>
+
+          {/* <Button title="Delete" color="red" onPress={props.onItemDeleted} /> */}
+          {/* <Button title="Close" onPress={props.onModalClose} /> */}
         </View>
       </View>
     </Modal>
@@ -39,7 +47,10 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     height: 75,
-    justifyContent: "space-between"
+    justifyContent: "center",
+    width: "100%",
+    // alignItems: "space-between",
+    flexDirection: "row",
   }
 });
 
