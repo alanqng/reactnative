@@ -7,19 +7,15 @@ import placeImage from "./src/assets/download1.jpg";
 import { connect } from 'react-redux'
 import { addPlace, deletePlace, selectPlace, deselectPlace, setName} from './src/store/actions/index'
 class App extends Component {
-  // state = {
-  //   placeName: "",
-  //   places: [],
-  //   selectedPlace: null
-  // };
-
- 
-
   onSubmitHandler = (placeName) => {
     // if (this.state.placeName.trim() === "") {
     //   return;
     // }
     this.props.onAddPlace(placeName)
+    setTimeout(() => {
+      console.log(this.props.places)
+    }, 500)
+    
     // this.setState(prevState => {
     //   return {
     //     places: prevState.places.concat({
@@ -70,7 +66,6 @@ class App extends Component {
           onModalClose={this.placeDetailCloseModal}
         />
         <ListInput
-          // placeName={this.state.placeName}
           onNameChange={this.placeNameChangeHandler}
           onSubmit={this.onSubmitHandler}
         />
@@ -87,7 +82,6 @@ class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     padding: 10,
     justifyContent: "flex-start",
     alignItems: "center",
@@ -101,7 +95,6 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {
-    placeName: state.places.placeName,
     places: state.places.places,
     selectedPlace: state.places.selectedPlace
   }
