@@ -40,30 +40,33 @@ export default class App extends Component {
         })
       };
     });
-  
   };
 
   placeDetailItemDeleted = () => {
-        this.setState(prevState => {
-        return {
-          places: prevState.places.filter((el, index) => {
-            return el.key !== prevState.selectedPlace.key;
-          }),
-          selectedPlace: null
-        };
-      });
-  }
+    this.setState(prevState => {
+      return {
+        places: prevState.places.filter((el, index) => {
+          return el.key !== prevState.selectedPlace.key;
+        }),
+        selectedPlace: null
+      };
+    });
+  };
 
   placeDetailCloseModal = () => {
     this.setState({
       selectedPlace: null
-    })
-  }
+    });
+  };
 
   render() {
     return (
       <View style={styles.container}>
-        <PlaceDetail selectedPlace={this.state.selectedPlace} onItemDeleted={this.placeDetailItemDeleted} onModalClose={this.placeDetailCloseModal} />
+        <PlaceDetail
+          selectedPlace={this.state.selectedPlace}
+          onItemDeleted={this.placeDetailItemDeleted}
+          onModalClose={this.placeDetailCloseModal}
+        />
         <ListInput
           placeName={this.state.placeName}
           onNameChange={this.placeNameChangeHandler}
