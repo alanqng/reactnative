@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, TextInput, Button } from "react-native";
 
 const ListInput = props => {
+  const [placeName, setPlaceName] = useState('')
+  
+
   return (
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.textInput}
-        value={props.placeName}
+        value={placeName}
         placeholder="An Awesome Place"
-        onChangeText={event => props.onNameChange(event)}
+        onChangeText={event => setPlaceName(event)}
       />
       <Button
-        onPress={() => props.onSubmit()}
+        onPress={() => props.onSubmit(placeName)}
         style={styles.add}
         title="Add"
         color="#841584"
