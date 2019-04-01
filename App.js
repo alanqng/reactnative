@@ -1,28 +1,56 @@
-import { Navigation } from 'react-native-navigation';
-import AuthScreen from './src/screens/Auth/AuthScreen';
-import SharePlaceScreen from './src/screens/SharePlace/SharePlace';
-import FindPlace from './src/screens/FindPlace/FindPlace';
+import { Navigation } from "react-native-navigation";
+import AuthScreen from "./src/screens/Auth/AuthScreen";
+import SharePlaceScreen from "./src/screens/SharePlace/SharePlace";
+import FindPlace from "./src/screens/FindPlace/FindPlace";
+import { Provider } from "react-redux";
+import configureStore from "./src/store/configureStore";
+import React from 'react'
 
-Navigation.registerComponent('awesome-navigation-Authscreen', () => AuthScreen)
-Navigation.registerComponent('awesome-navigation-FindPlaceScreen', () => SharePlaceScreen)
-Navigation.registerComponent('awesome-navigation-SharePlaceScreen', () => FindPlace)
+const store = configureStore();
+
+Navigation.registerComponent(
+  "awesome-navigation-Authscreen",
+  () => (props) => (
+    <Provider store={store}>
+      <AuthScreen {...props}/>
+    </Provider>
+  ), () => AuthScreen
+);
+Navigation.registerComponent(
+  "awesome-navigation-FindPlaceScreen",
+  () => (props) => (
+    <Provider store={store}>
+      <FindPlace {...props}/>
+    </Provider>
+  ), () => FindPlace
+);
+Navigation.registerComponent(
+  "awesome-navigation-SharePlaceScreen",
+  () => (props) => (
+    <Provider store={store}>
+      <SharePlaceScreen {...props}/>
+    </Provider>
+  ), () => SharePlaceScreen
+);
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
       stack: {
-        children: [{
-          component: {
-            name: 'awesome-navigation-Authscreen',
-            passProps: {
-              text: 'stack with one child'
+        children: [
+          {
+            component: {
+              name: "awesome-navigation-Authscreen",
+              passProps: {
+                text: "stack with one child"
+              }
             }
           }
-        }],
+        ],
         options: {
           topBar: {
             title: {
-              text: 'Login'
+              text: "Login"
             }
           }
         }
@@ -48,7 +76,7 @@ Navigation.events().registerAppLaunchedListener(() => {
 //     setTimeout(() => {
 //       console.log(this.props.places)
 //     }, 500)
-    
+
 //     // this.setState(prevState => {
 //     //   return {
 //     //     places: prevState.places.concat({

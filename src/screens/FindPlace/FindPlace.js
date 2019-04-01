@@ -1,12 +1,22 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux'
+import ListItem from '../../components/ListItem'
 
-const FindPlace = () => {
-  return (
-    <View>
-        <Text>On FindPlace</Text>
-    </View>
-  )
+class FindPlace extends React.Component {
+  render() {
+    return (
+        <View>
+            <ListItem places={this.props.places} />
+        </View>
+      )
+  }
 }
 
-export default FindPlace
+const mapStateToProps = state => {
+    return {
+        places: state.places.places
+    }
+}
+
+export default connect(mapStateToProps)(FindPlace)

@@ -10,20 +10,20 @@ export const deletePlace = () => {
         type: DELETE_PLACE,
     };
 }
-export const selectPlace = (index) => {
-    return {
-        type: SELECT_PLACE,
-        index: index
-    };
-}
-export const deselectPlace = () => {
-    return {
-        type: UNSELECT_PLACE,
-    };
-}
-export const setName = (event) => {
-    return {
-        type: SET_NAME,
-        name: event
-    };
-}
+// export const selectPlace = (index) => {
+//     return {
+//         type: SELECT_PLACE,
+//         index: index
+//     };
+// }
+// export const deselectPlace = () => {
+//     return {
+//         type: UNSELECT_PLACE,
+//     };
+// }
+// export const setName = (event) => {
+//     return {
+//         type: SET_NAME,
+//         name: event
+//     };
+// }
