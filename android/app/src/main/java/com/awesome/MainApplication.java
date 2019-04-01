@@ -13,8 +13,6 @@ import com.oblador.vectoricons.VectorIconsPackage;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainApplication extends Application implements ReactApplication {
-
   public class MainApplication extends NavigationApplication {
  
   @Override

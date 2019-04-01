@@ -96,6 +96,7 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -141,6 +142,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    implementation 'com.android.support:design:27.1.0'
     implementation "com.facebook.react:react-native:+"  // From node_modules
     compile fileTree(dir: "libs", include: ["*.jar"]) 
     compile project(':react-native-vector-icons') 
@@ -152,4 +154,19 @@ dependencies {
 task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
+}
+
+subprojects { subproject ->
+    afterEvaluate {
+        if ((subproject.plugins.hasPlugin('android') || subproject.plugins.hasPlugin('android-library'))) {
+            android {
+                variantFilter { variant ->
+                    def names = variant.flavors*.name
+                    if (names.contains("reactNative51") || names.contains("reactNative55") || names.contains("reactNative56") || names.contains("reactNative57") || names.contains("reactNative58")) {
+                        setIgnore(true)
+                    }
+                }
+            }
+        }
+    }
 }
