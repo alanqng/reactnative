@@ -1,7 +1,11 @@
 import { Navigation } from 'react-native-navigation';
 import AuthScreen from './src/screens/Auth/AuthScreen';
+import SharePlaceScreen from './src/screens/SharePlace/SharePlace';
+import FindPlace from './src/screens/FindPlace/FindPlace';
 
 Navigation.registerComponent('awesome-navigation-Authscreen', () => AuthScreen)
+Navigation.registerComponent('awesome-navigation-FindPlaceScreen', () => SharePlaceScreen)
+Navigation.registerComponent('awesome-navigation-SharePlaceScreen', () => FindPlace)
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
