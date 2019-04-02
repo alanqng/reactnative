@@ -27,7 +27,7 @@ const placesReducer = (state = initialState, action) => {
       return {
         ...state,
         places: state.places.filter((el, index) => {
-          return el.key !== state.selectedPlace.key;
+          return el.key !== action.placeKey;
         }),
         selectedPlace: null
       };

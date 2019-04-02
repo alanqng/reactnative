@@ -9,6 +9,9 @@ import {
   TouchableOpacity
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { connect } from "react-redux";
+import { deletePlace } from '../../store/actions/index'
+import { Navigation } from "react-native-navigation";
 
 const PlaceDetail = props => {
   // let modalContent = null;
@@ -20,6 +23,11 @@ const PlaceDetail = props => {
   // </View>
   //   );
   // }
+  const placeDeleteHandler = () => {
+    props.onDeletePlace(props.selectedPlace.key)
+    Navigation.pop(props.componentId)
+
+  }
   return (
     // <Modal visible={props.selectedPlace !== null} animationType="slide">
     <View style={styles.modalContainer}>
@@ -33,18 +41,17 @@ const PlaceDetail = props => {
             size={50}
             name="trash"
             color="red"
-            onPress={props.onItemDeleted}
-            style={{ marginRight: 20 }}
+            onPress={placeDeleteHandler}
           />
         </TouchableOpacity>
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
           <Icon
             size={50}
             name="times"
             color="blue"
             onPress={props.onModalClose}
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         {/* <Button title="Delete" color="red" onPress={props.onItemDeleted} /> */}
         {/* <Button title="Close" onPress={props.onModalClose} /> */}
@@ -76,4 +83,10 @@ const styles = StyleSheet.create({
   }
 });
 
-export default PlaceDetail;
+const mapDispatchToProps = dispatch => {
+  return {
+    onDeletePlace: (key) => dispatch(deletePlace(key))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(PlaceDetail);

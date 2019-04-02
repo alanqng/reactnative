@@ -10,14 +10,14 @@ const FindPlace = props => {
       component: {
         name: "awesome-navigation-PlaceDetailScreen",
         passProps: {
-          selectedPlace: props.places.find(place => (place.key === key))
+          selectedPlace: props.places.find(place => place.key === key)
         },
         options: {
-            topBar: {
-                title: {
-                    text: props.places.find(place => (place.key === key)).name,
+          topBar: {
+            title: {
+              text: props.places.find(place => place.key === key).place
             }
-        }
+          }
         }
       }
     });

@@ -34,7 +34,12 @@ Navigation.registerComponent(
   ), () => SharePlaceScreen
 );
 Navigation.registerComponent(
-  "awesome-navigation-PlaceDetailScreen", 
+  "awesome-navigation-PlaceDetailScreen",
+  () => (props) => (
+    <Provider store={store}>
+      <PlaceDetail {...props}/>
+    </Provider>
+  ),
   () => PlaceDetail
 )
 
