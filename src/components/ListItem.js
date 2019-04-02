@@ -14,7 +14,7 @@ const ListItem = props => {
       renderItem={info => (
         <TouchableOpacity
           style={styles.listView}
-          onPress={() => props.onItemSelected(info.index)}
+          onPress={() => props.onItemSelected(info.item.key)}
         >
           <Image style={styles.listImg} source={info.item.image} />
           <Text style={styles.listText}>{info.item.place}</Text>

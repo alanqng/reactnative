@@ -5,6 +5,7 @@ import FindPlace from "./src/screens/FindPlace/FindPlace";
 import { Provider } from "react-redux";
 import configureStore from "./src/store/configureStore";
 import React from 'react'
+import PlaceDetail from "./src/screens/PlaceDetail/PlaceDetail";
 
 const store = configureStore();
 
@@ -32,6 +33,10 @@ Navigation.registerComponent(
     </Provider>
   ), () => SharePlaceScreen
 );
+Navigation.registerComponent(
+  "awesome-navigation-PlaceDetailScreen", 
+  () => PlaceDetail
+)
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
