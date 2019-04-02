@@ -3,14 +3,12 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux'
 import ListItem from '../../components/ListItem'
 
-class FindPlace extends React.Component {
-  render() {
+const FindPlace = (props) => {
     return (
         <View>
-            <ListItem places={this.props.places} />
+            <ListItem places={props.places} />
         </View>
       )
-  }
 }
 
 const mapStateToProps = state => {
