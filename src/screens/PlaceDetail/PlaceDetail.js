@@ -23,9 +23,6 @@ const PlaceDetail = props => {
   // </View>
   //   );
   // }
-  
-
-  navigationButtonEventListener.remove()
   const placeDeleteHandler = () => {
     props.onDeletePlace(props.selectedPlace.key)
     Navigation.pop(props.componentId)
