@@ -1,5 +1,5 @@
 import { Navigation } from "react-native-navigation";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 const startTabs = () => {
   Promise.all([
@@ -46,7 +46,7 @@ const startTabs = () => {
                 options: {
                   bottomTab: {
                     text: "Share",
-                    icon: sources[0],
+                    icon: sources[1],
                     testID: "FIRST_TAB_BAR_BUTTON"
                   },
                   topBar: {
