@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import configureStore from "./src/store/configureStore";
 import React from 'react'
 import PlaceDetail from "./src/screens/PlaceDetail/PlaceDetail";
+import SideDrawer from "./src/screens/SideDrawer/SideDrawer";
 
 const store = configureStore();
 
@@ -41,6 +42,10 @@ Navigation.registerComponent(
     </Provider>
   ),
   () => PlaceDetail
+)
+Navigation.registerComponent(
+  'awesome-navigation-SideDrawer',
+  () => SideDrawer
 )
 
 Navigation.events().registerAppLaunchedListener(() => {

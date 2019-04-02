@@ -4,60 +4,101 @@ import Icon from "react-native-vector-icons/FontAwesome";
 const startTabs = () => {
   Promise.all([
     Icon.getImageSource("map", 30),
-    Icon.getImageSource("share", 30)
+    Icon.getImageSource("share", 30),
+    Icon.getImageSource("bars", 30, '#E3F2FD')
   ]).then(sources => {
-    console.log(sources[0]);
+    console.log(sources[2]);
     Navigation.setRoot({
       root: {
-        bottomTabs: {
-          children: [
-            {
-              stack: {
-                children: [
-                  {
-                    component: {
-                      name: "awesome-navigation-FindPlaceScreen"
-                    }
-                  }
-                ],
-                options: {
-                  bottomTab: {
-                    text: "Find",
-                    icon: sources[0],
-                    testID: "FIRST_TAB_BAR_BUTTON"
-                  },
-                  topBar: {
-                    title: {
-                      text: "Find"
-                    }
-                  }
-                }
-              }
+        sideMenu: {
+          left: {
+            component: {
+            id: 'menuSide',
+              name: "awesome-navigation-SideDrawer"
             },
-            {
-              stack: {
-                children: [
-                  {
-                    component: {
-                      name: "awesome-navigation-SharePlaceScreen"
+            options: {
+              topBar: {
+                leftButtons: [
+                    {
+                      id: "sideDrawerToggle",
+                      icon: sources[2]
                     }
-                  }
-                ],
-                options: {
-                  bottomTab: {
-                    text: "Share",
-                    icon: sources[1],
-                    testID: "FIRST_TAB_BAR_BUTTON"
-                  },
-                  topBar: {
-                    title: {
-                      text: "Share"
-                    }
-                  }
-                }
+                  ]
               }
             }
-          ]
+          },
+          center: {
+            bottomTabs: {
+              children: [
+                {
+                  stack: {
+                    children: [
+                      {
+                        component: {
+                          name: "awesome-navigation-FindPlaceScreen"
+                        }
+                      }
+                    ],
+                    options: {
+                      bottomTab: {
+                        text: "Find",
+                        icon: sources[0],
+                        testID: "FIRST_TAB_BAR_BUTTON"
+                      },
+                      topBar: {
+                        title: {
+                          text: "Find"
+                        },
+                        leftButtons: [
+                          {
+                            id: "sideDrawerToggle",
+                            icon: sources[2]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  stack: {
+                    children: [
+                      {
+                        component: {
+                          name: "awesome-navigation-SharePlaceScreen"
+                        }
+                      }
+                    ],
+                    options: {
+                      bottomTab: {
+                        text: "Share",
+                        icon: sources[1],
+                        testID: "FIRST_TAB_BAR_BUTTON"
+                      },
+                      topBar: {
+                        title: {
+                          text: "Share"
+                        },
+                        leftButtons: [
+                          {
+                            id: "sideDrawerToggle",
+                            icon: sources[2]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+
+          // sideMenu: {
+          //     left: {
+          //         component: {
+          //             name: 'awesome-navigation-SideDrawer'
+          //         }
+          //     }
+          // }
         }
       }
       // Navigation.setRoot({

@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { addPlace } from '../../store/actions/index'
 
 class SharePlaceScreen extends React.Component {
-
 placeAddedHandler = placename => {
     this.props.onAddPlace(placename)
 }

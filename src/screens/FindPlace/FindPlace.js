@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import ListItem from "../../components/ListItem";
 import { Navigation } from "react-native-navigation";
 
+
 const FindPlace = props => {
   const onItemSel = key => {
     Navigation.push(props.componentId, {
